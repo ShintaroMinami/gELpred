@@ -1,0 +1,30 @@
+#
+backup/
+tests/tmp/
+tests/data/
+
+# mican
+mican/mican_2015.03.09/src/*.o
+mican/mican_2015.03.09/mican
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+eggs/
+.eggs/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+*.egg
+
