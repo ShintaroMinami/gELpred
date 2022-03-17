@@ -1,0 +1,52 @@
+#! /usr/bin/env python
+import sys
+import os
+from tqdm import tqdm
+maindir = os.path.abspath(os.path.dirname(__file__)+'/../')
+sys.path.append(maindir)
+from gepred.prediction import calc_mican, get_hits, MODELS
+
+testdir = maindir + '/tests/'
+
+# argparse
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('pdbs', type=str, nargs='+', help='PDB files')
+parser.add_argument('--model-type', '-m', type=str, default=None, choices=['RW', 'RWRR'], help='Prediction model type')
+parser.add_argument('--dir-temp', '-t', type=str, default='/var/tmp/', help='Temporary file directory')
+args = parser.parse_args()
+
+# args
+pdbfiles = args.pdbs
+modeltypes = [args.model_type] if args.model_type != None else ['RW', 'RWRR']
+
+# calc mican
+ntotal = 0
+for m in modeltypes:
+    for _ in MODELS[m].keys():
+        ntotal += len(pdbfiles)
+with tqdm(total = ntotal, desc='[ mican ]') as pbar:
+    mican_result, tmp_files = calc_mican(pdbfiles, models=modeltypes, tempdir=args.dir_temp, pbar=pbar, return_tmpfiles=True)
+
+# get hits
+hits = get_hits(mican_result)
+
+# output
+outdict = dict()
+for modeltype in hits.keys():
+    for substr, name, kdd in hits[modeltype]:
+        kdtid = MODELS[modeltype][substr]['kdtid']
+        if name in outdict.keys():
+            outdict[name].append('{}:{}:{:.3f}'.format(modeltype, kdtid, kdd))
+        else:
+            outdict[name] = ['{}:{}:{:.3f}'.format(modeltype, kdtid, kdd)]
+
+if len(outdict) == 0:
+    print("No hits found.")
+else:
+    print("# Totally {:} hits found.".format(len(outdict)))
+    for substr in sorted(outdict.keys()):
+        print('{} : {}'.format(substr, ','.join(outdict[substr])))
+
+for f in tmp_files:
+    os.remove(f)

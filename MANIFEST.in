@@ -1,0 +1,2 @@
+include gepred/bin/*
+include gepred/data/*

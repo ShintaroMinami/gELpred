@@ -1,0 +1,52 @@
+=============================================
+Changes in MICAN                     Jan 2015
+=============================================
+mTM-score definition was changed to consider mainchain angle similairty.
+
+=============================================
+Changes in MICAN                     Aug 2014
+=============================================
+> src/global_alignment.c
+Significant error was fixed.
+
+=============================================
+Changes in MICAN                     Jul 2014
+=============================================
+> src/TMscore_mod.c, check.c, ca_align.c, main_align.c, mican.h
+Significant error was fixed.
+> src/output.c
+Changed Input/Output format (addition of mTMscore).
+
+=============================================
+Changes in MICAN                     Nov 2013
+=============================================
+> src/read_pdb.c
+When a protein chain does not have chainID, "A" will be assigned.
+> src/output.c, print_data.c, main.c, getopt.c
+Changed Input/Output format.
+Chain ID specifier was added to Input option.
+
+=============================================
+Changes in MICAN                     Apr 2013
+=============================================
+* MICAN had some major changes.
+ 1) Addition 'sequential alignment mode' to MICAN.
+ 2) In the selection scheme of the best alignment,
+    MICAN has changed to consider SP-score.
+
+> src/main.c, src/ca_alignment.c, cacb_alignment.c
+Added Sequential alignment mode.
+> src/SPscore.c, src/score.c
+Added SPscore calculation.
+
+=============================================
+Changes in MICAN                     Jan 2013
+=============================================
+> src/clustering_align.c, src/score.c
+Some bugs were fixed.
+
+=============================================
+Changes in MICAN (Original)          Dec 2012
+=============================================
+> src/changed.c
+Brief description of change.
