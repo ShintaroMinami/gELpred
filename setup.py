@@ -14,17 +14,17 @@ class compile_mican(build_ext):
     def build_extension(self, ext):
         # make
         subprocess.run(['make'])
-        outpath = os.path.join(self.build_lib, 'gepred/bin/mican_2015.03.09')
+        outpath = os.path.join(self.build_lib, 'gelpred/bin/mican_2015.03.09')
         shutil.move('mican_2015.03.09', outpath)
 
 setuptools.setup(
-    name="gepred",
+    name="gelpred",
     version=VERSION,
     author="Shintaro Minami",
     description="GroE substrate prediction program",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ShintaroMinami/GEpred",
+    url="https://github.com/ShintaroMinami/gELpred",
     cmdclass={
         'build_ext': compile_mican,
     },
@@ -36,7 +36,7 @@ setuptools.setup(
         'tqdm'
     ],
     scripts=[
-        'scripts/GEpred',
+        'scripts/gELpred',
     ],
 
 )

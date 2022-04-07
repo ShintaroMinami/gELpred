@@ -1,4 +1,4 @@
-# GEpred
+# gELpred
 GroE substrate prediction program
 
 # Install
@@ -7,19 +7,19 @@ python setup.py install
 ```
 
 # Usage
-When gepred has been installed:
+When gelpred has been installed:
 ```bash
-GEpred  pdbfile1 pdbfile2 ...
+gELpred  pdbfile1 pdbfile2 ...
 ```
 
-W/o installation of gepred:
+W/o installation of gelpred:
 ```bash
-./scripts/GEpred  pdbfile1 pdbfile2 ...
+./scripts/gELpred  pdbfile1 pdbfile2 ...
 ```
 
 ### Options
 ```
-usage: GEpred [-h] [--model-type {RW,RWRR}] [--dir-temp DIR_TEMP]
+usage: gELpred [-h] [--model-type {RW,RWRR}] [--dir-temp DIR_TEMP]
                  pdbs [pdbs ...]
 
 positional arguments:

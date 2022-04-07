@@ -4,7 +4,7 @@ import os
 from tqdm import tqdm
 maindir = os.path.abspath(os.path.dirname(__file__)+'/../')
 sys.path.append(maindir)
-from gepred.prediction import calc_mican, get_hits, MODELS
+from gelpred.prediction import calc_mican, get_hits, MODELS
 
 testdir = maindir + '/tests/'
 

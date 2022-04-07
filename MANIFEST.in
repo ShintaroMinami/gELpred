@@ -1,2 +1,2 @@
-include gepred/bin/*
-include gepred/data/*
+recursive-include gelpred/bin *
+recursive-include gelpred/data *
